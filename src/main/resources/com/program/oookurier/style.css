@@ -1,0 +1,23 @@
+.mainBackground{
+ -fx-background-color:  black;
+}
+
+.mainGrid{
+-fx-background-color:#15172b;
+-fx-background-radius:20;
+-fx-padding:5px;
+}
+
+.mainField{
+-fx-background-color:#303245;
+-fx-background-radius:20px;
+-fx-padding:15px;
+-fx-margin:5px;
+-fx-text-fill:white;
+}
+
+.mainButton{
+-fx-background-color:#08d;
+-fx-padding:8px 15px;
+-fx-background-radius:12px;
+}
