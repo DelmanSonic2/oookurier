@@ -36,7 +36,7 @@ public class AuthSceneController {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(Main.class.getResource("RegisterScene.fxml"));
-            Globals.mainStage.setScene(new Scene(loader.load()));
+            Globals.mainStage.getScene().setRoot(loader.load());
         } catch (Exception ex) {
             System.out.println("Ошибка при включении формы регистрации");
         }
