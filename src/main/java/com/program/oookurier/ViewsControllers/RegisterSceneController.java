@@ -75,7 +75,7 @@ public class RegisterSceneController {
             loader.setLocation(Main.class.getResource("AuthScene.fxml"));
             Globals.mainStage.setScene(new Scene(loader.load()));
         } catch (Exception ex) {
-            System.out.println("Ошибка при включении формы регистрации");
+            System.out.println("Ошибка при включении формы авторизации");
         }
     }
 
