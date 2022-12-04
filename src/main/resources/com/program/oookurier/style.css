@@ -21,3 +21,8 @@
 -fx-padding:8px 15px;
 -fx-background-radius:12px;
 }
+
+.no_valid{
+-fx-border-color:red;
+-fx-border-radius:20px;
+}

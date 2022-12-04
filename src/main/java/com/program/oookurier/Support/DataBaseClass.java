@@ -47,37 +47,37 @@ public class DataBaseClass {
     }
 
     public boolean createTables() {
-        String sql = "CREATE TABLE " + DataBaseTables.DB_USERS + " (\n" +
+        String sql = "CREATE TABLE  if not exists " + DataBaseTables.DB_USERS + " (\n" +
                 "id int IDENTITY,\n" +
-                "login VARCHAR(50) NOT NULL,\n" +
+                "email VARCHAR(50) NOT NULL,\n" +
                 "password VARCHAR(50) NOT NULL,\n" +
                 "phone VARCHAR(50) NOT NULL,\n" +
                 "name VARCHAR(50) NOT NULL,\n" +
                 "created VARCHAR(50) NOT NULL,\n" +
-                "roles int\n" +
+                "role int\n" +
                 ");\n\n" +
 
-                "CREATE TABLE " + DataBaseTables.DB_CITIES + " (\n" +
+                "CREATE TABLE if not exists" + DataBaseTables.DB_CITIES + " (\n" +
                 "id int IDENTITY,\n" +
                 "name VARCHAR(50) NOT NULL,\n" +
                 ");\n\n" +
 
-                "CREATE TABLE " + DataBaseTables.DB_SENDING_METHODS + " (\n" +
+                "CREATE TABLE  if not exists" + DataBaseTables.DB_SENDING_METHODS + " (\n" +
                 "id int IDENTITY,\n" +
                 "name VARCHAR(50) NOT NULL,\n" +
                 ");\n\n" +
 
-                "CREATE TABLE " + DataBaseTables.DB_DELIVERY_METHODS + " (\n" +
+                "CREATE TABLE if not exists" + DataBaseTables.DB_DELIVERY_METHODS + " (\n" +
                 "id int IDENTITY,\n" +
                 "name VARCHAR(50) NOT NULL,\n" +
                 ");\n\n" +
 
-                "CREATE TABLE " + DataBaseTables.DB_SENDING_STATUSES + " (\n" +
+                "CREATE TABLE if not exists" + DataBaseTables.DB_SENDING_STATUSES + " (\n" +
                 "id int IDENTITY,\n" +
                 "name VARCHAR(50) NOT NULL,\n" +
                 ");\n\n" +
 
-                "CREATE TABLE " + DataBaseTables.DB_USER_ADDRESSES + " (\n" +
+                "CREATE TABLE if not exists" + DataBaseTables.DB_USER_ADDRESSES + " (\n" +
                 "id int IDENTITY,\n" +
                 "\"user\" int NOT NULL,\n" +
                 "name VARCHAR(50) NOT NULL,\n" +
@@ -85,7 +85,7 @@ public class DataBaseClass {
                 "REFERENCES \"" + Settings.databaseName + "\".\"" + DataBaseTables.DB_USERS + "\" (id)" +
                 ");\n\n" +
 
-                "CREATE TABLE " + DataBaseTables.DB_FILLIALS + " (\n" +
+                "CREATE TABLE if not exists" + DataBaseTables.DB_FILLIALS + " (\n" +
                 "id int IDENTITY,\n" +
                 "city int NOT NULL,\n" +
                 "address VARCHAR(50) NOT NULL,\n" +
@@ -95,7 +95,7 @@ public class DataBaseClass {
                 "REFERENCES \"" + Settings.databaseName + "\".\"" + DataBaseTables.DB_CITIES + "\" (id)" +
                 ");\n\n" +
 
-                "CREATE TABLE " + DataBaseTables.DB_SENDINGS + " (\n" +
+                "CREATE TABLE if not exists" + DataBaseTables.DB_SENDINGS + " (\n" +
                 "id int IDENTITY,\n" +
                 "picking_user int,\n" +
                 "delivery_user int,\n" +

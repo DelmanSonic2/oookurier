@@ -33,7 +33,7 @@
                         <Font name="Arial" size="24.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="lognFleld" promptText="Email или телефон" styleClass="mainField" GridPane.rowIndex="1">
+                  <TextField fx:id="loginFleld" promptText="Email или телефон" styleClass="mainField" GridPane.rowIndex="1">
                      <GridPane.margin>
                         <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                      </GridPane.margin>
