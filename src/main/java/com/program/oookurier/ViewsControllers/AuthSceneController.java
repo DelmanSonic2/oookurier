@@ -24,6 +24,26 @@ public class AuthSceneController {
 
     @FXML
     void auth(ActionEvent event) {
+
+        loginFleld.getStyleClass().removeAll("no_valid");
+        passwordField.getStyleClass().removeAll("no_valid");
+
+        if (loginFleld.textProperty().getValue().length() == 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Не заполнен поле 'Телефон или Email'");
+            alert.show();
+            loginFleld.getStyleClass().add("no_valid");
+            return;
+        }
+
+        if (passwordField.textProperty().getValue().length() == 0) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Не заполнен поле 'Пароль'");
+            alert.show();
+            passwordField.getStyleClass().add("no_valid");
+            return;
+        }
+
         UserModel userModel = new UserModel();
         userModel.setEmail(loginFleld.textProperty().getValue());
         userModel.setPhone(loginFleld.textProperty().getValue());
