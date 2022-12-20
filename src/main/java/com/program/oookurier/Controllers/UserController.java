@@ -29,11 +29,20 @@ public class UserController {
                 "SELECT * FROM \"" + DataBaseTables.DB_USERS + "\" " +
                         "WHERE \"phone\"='" + userModel.getPhone() + "' or \"email\"='" + userModel.getEmail() + "'");
 
+        ResultSet count = Globals.dataBaseClass.query(
+                "SELECT * FROM \"" + DataBaseTables.DB_USERS + "\"");
+
         try {
+            int cnt =0;
+            while (count.next()){
+                cnt++;
+            }
+            if (cnt == 0) userModel.setRole(1);
             if (resultSet.next()) return -1; //-1 обозначает, что пользователь с таким номером или почтой уже существует
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
 
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("YYYY-MM-dd");
         LocalDateTime localDateTime = LocalDateTime.now();

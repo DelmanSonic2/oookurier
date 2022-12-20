@@ -1,6 +1,6 @@
 package com.program.oookurier.Config;
 
-public class DataBaseTables {
+public  class DataBaseTables {
 
     public static final String DB_USERS = Settings.tablePrefix + "users"; //Пользователи
 
@@ -17,5 +17,7 @@ public class DataBaseTables {
     public static final String DB_FILLIALS = Settings.tablePrefix + "fillials"; //Филлиалы
 
     public static final String DB_SENDINGS = Settings.tablePrefix + "sendings"; //отправления
+
+    public static final String DB_ROLES = Settings.tablePrefix + "roles";//Роли
 
 }

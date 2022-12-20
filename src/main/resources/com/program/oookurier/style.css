@@ -16,6 +16,20 @@
 -fx-text-fill:white;
 }
 
+
+.mainField .arrow-button {
+-fx-background-color:transparent;}
+
+.mainField .label{
+     -fx-text-fill: white;
+     }
+
+.mainField .text-field{
+     -fx-text-fill: white;
+-fx-background-color:transparent;
+ -fx-control-inner-background: white;
+}
+
 .mainButton{
 -fx-background-color:#08d;
 -fx-padding:8px 15px;
@@ -26,3 +40,28 @@
 -fx-border-color:red;
 -fx-border-radius:20px;
 }
+
+.transparentScroll{
+-fx-background-color:transparent;
+}
+
+.transparentScroll > .viewport {
+-fx-background-color:transparent;
+}
+
+.mainTable{
+-fx-background-color:transparent;
+-fx-color:white;
+}
+.mainTable .column-header-background{
+-fx-background-color:transparent;
+
+}
+
+.mainTable  .column-header-background  .filter {
+-fx-background-color:transparent;
+}
+
+.mainTable .column-header {
+               -fx-background-color: transparent;
+           }

@@ -1,17 +1,22 @@
 package com.program.oookurier.ViewsControllers;
 
+import com.program.oookurier.Config.DataBaseTables;
 import com.program.oookurier.Controllers.UserController;
 import com.program.oookurier.Globals;
-import com.program.oookurier.Main;
 import com.program.oookurier.Models.UserModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class RegisterSceneController {
+import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
+
+public class AddUserFromController {
 
     @FXML
     private TextField emailField;
@@ -26,8 +31,33 @@ public class RegisterSceneController {
     private TextField phoneField;
 
     @FXML
-    void register() {
+    private ChoiceBox<String> roles;
 
+    Map<String, Integer> roleMap = new HashMap<>();
+
+    @FXML
+    void initialize() {
+        ResultSet roleRS = Globals.dataBaseClass.query("SELECT * FROM " + DataBaseTables.DB_ROLES);
+
+        ObservableList<String> roleOL = FXCollections.observableArrayList();
+
+        try {
+            while (roleRS.next()) {
+                String name = roleRS.getString("name");
+                int id = roleRS.getInt("id");
+
+                roleOL.add(name);
+
+                roleMap.put(name, id);
+            }
+            roles.setItems(roleOL);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    @FXML
+    void create(ActionEvent event) {
         nameField.getStyleClass().removeAll("no_valid");
         emailField.getStyleClass().removeAll("no_valid");
         phoneField.getStyleClass().removeAll("no_valid");
@@ -49,16 +79,22 @@ public class RegisterSceneController {
         }
 
         if (passwordField.textProperty().getValue().length() < 3) {
-            passwordField.getStyleClass().add("no_valud");
+            passwordField.getStyleClass().add("no_valid");
             return;
         }
+
+        if (roles.getValue() == null) {
+            roles.getStyleClass().add("no_valid");
+            return;
+        }
+
 
         UserModel userModel = new UserModel();
         userModel.setEmail(emailField.textProperty().getValue());
         userModel.setName(nameField.textProperty().getValue());
         userModel.setPassword(passwordField.textProperty().getValue());
         userModel.setPhone(phoneField.textProperty().getValue());
-        userModel.setRole(2);
+        userModel.setRole(roleMap.get(roles.getValue()));
 
         UserController userController = new UserController();
 
@@ -66,22 +102,7 @@ public class RegisterSceneController {
         int result = userController.register(userModel);
 
         if (result == 1) {
-            toAuth();
-        } else {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Ошибка регистрации");
-            alert.show();
-        }
-    }
-
-    @FXML
-    void toAuth() {
-        try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(Main.class.getResource("AuthScene.fxml"));
-            Globals.mainStage.getScene().setRoot(loader.load());
-        } catch (Exception ex) {
-            System.out.println("Ошибка при включении формы авторизации");
+            Globals.currentModal.close();
         }
     }
 

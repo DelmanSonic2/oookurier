@@ -8,5 +8,6 @@ public class Globals {
     public static Stage mainStage; //Главное окно
     public static DataBaseClass dataBaseClass = new DataBaseClass(); //Глобальный класс базы данных
 
+    public static Stage currentModal; //Текущее модальное окно
     public static UserModel currentUser; //Текущий пользователь
 }

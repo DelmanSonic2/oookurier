@@ -14,6 +14,16 @@ public class UserModel {
 
     private int role = 0; //Роль пользователя (по умолчанию 0 - клиент)
 
+    private String roleName; //Название роли
+
+    public String getRoleName() {
+        return roleName;
+    }
+
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
+    }
+
     public int getId() {
         return id;
     }
